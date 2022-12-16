@@ -1,6 +1,7 @@
  
 import cors from 'cors';
 import express from 'express'
+import authRouter from '../v1/routes/auth'
 
 import { connectToMongoDB } from './databases/mongoDB.config';
 
@@ -8,14 +9,14 @@ class Server {
   public app
   private port
 
-  private authPath
+  private apiPaths = {
+    auth: '/api/v1/auth'
+  }
 
   constructor() {
 
     this.app = express();
     this.port = process.env.PORT;
-
-    this.authPath = '/api/v1/auth'
 
     this.configDb();
 
@@ -41,8 +42,7 @@ class Server {
 
   private routes = (): void => {
     ///TODO: Add routes with controllers classes 
-
-
+    this.app.use( this.apiPaths.auth, authRouter )
   }
 
   public listen = (): void => {

@@ -1,6 +1,8 @@
 import { Router } from 'express'
-import { AuthController } from '../auth/application/auth-controller';
+import { LoginMiddleware } from '../auth/middlewares/handle-login';
 
 export const router = Router();
 
-router.post('/login') // TODO: implement controller method here)
+router.post('/login', LoginMiddleware.handler)
+
+export default router;

@@ -1,7 +1,7 @@
 import { AuthRequestDto, AuthResponseDto, IAuthService } from "../../domain";
 
 
-export class loginUseCase {
+export class LoginUseCase {
 
 
     private readonly _service: IAuthService;
